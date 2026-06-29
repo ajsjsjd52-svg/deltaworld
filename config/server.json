@@ -1,7 +1,7 @@
 {
   "minecraft": {
-    "ip": "play.deltaworld.ru",
-    "port": 25565,
+    "ip": "d20.aurorix.net",
+    "port": 25074,
     "version": "1.20.x",
     "mode": "Survival"
   },
