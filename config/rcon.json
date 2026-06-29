@@ -1,7 +1,7 @@
 {
-  "host": "ваш_внешний_ip_сервера",
+  "host": "166.1.144.20",
   "port": 25575,
-  "password": "ваш_rcon_пароль",
+  "password": "2557525575",
   "timeout": 5000,
   "reconnect": true,
   "reconnectDelay": 3000

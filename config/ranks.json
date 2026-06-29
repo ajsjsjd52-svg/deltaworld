@@ -3,11 +3,11 @@
     "hero": {
       "name": "HERO",
       "displayName": "Герой",
-      "price": 9,
-      "stars": 9,
+      "price": 0,
+      "stars": 0,
       "color": "#00ff88",
       "command": "lp user {nickname} parent set hero",
-      "description": "Начальная привилегия",
+      "description": "Бесплатная привилегия",
       "features": [
         "Цветной ник",
         "Приватная территория 2x2 чанка",

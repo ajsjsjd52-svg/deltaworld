@@ -474,7 +474,7 @@ bot.on('callback_query', async (query) => {
 
 Выберите привилегию для покупки:
 
-<b>HERO</b> - 9⭐ (9₽)
+<b>HERO</b> - 🎁 БЕСПЛАТНО!
 <b>TITAN</b> - 17⭐ (17₽)
 <b>AVENGER</b> - 25⭐ (25₽)
 <b>OVERLORD</b> - 50⭐ (50₽)
@@ -489,7 +489,7 @@ bot.on('callback_query', async (query) => {
                 reply_markup: {
                     inline_keyboard: [
                         [
-                            { text: 'HERO (9⭐)', callback_data: 'rank_hero' },
+                            { text: '🎁 HERO (БЕСПЛАТНО)', callback_data: 'rank_hero' },
                             { text: 'TITAN (17⭐)', callback_data: 'rank_titan' }
                         ],
                         [
@@ -659,18 +659,34 @@ Telegram Stars - это внутренняя валюта Telegram для опл
             const rankKey = data.replace('rank_', '');
             const rank = RANKS[rankKey];
 
-            userSessions[chatId] = {
-                type: 'rank',
-                item: rankKey,
-                price: rank.stars,
-                step: 'awaiting_nickname'
-            };
+            // Если привилегия бесплатная (0 звезд) - выдаем сразу
+            if (rank.stars === 0) {
+                userSessions[chatId] = {
+                    type: 'rank',
+                    item: rankKey,
+                    price: 0,
+                    step: 'awaiting_nickname_free'
+                };
 
-            bot.sendMessage(chatId, `
+                bot.sendMessage(chatId, `
+🎁 <b>${rank.name}</b> - БЕСПЛАТНО!
+
+Введите ваш игровой никнейм в Minecraft:
+                `.trim(), { parse_mode: 'HTML' });
+            } else {
+                userSessions[chatId] = {
+                    type: 'rank',
+                    item: rankKey,
+                    price: rank.stars,
+                    step: 'awaiting_nickname'
+                };
+
+                bot.sendMessage(chatId, `
 🏆 <b>${rank.name}</b> - ${rank.stars}⭐
 
 Введите ваш игровой никнейм в Minecraft:
-            `.trim(), { parse_mode: 'HTML' });
+                `.trim(), { parse_mode: 'HTML' });
+            }
         }
 
         // Выбор услуги
@@ -729,7 +745,7 @@ bot.on('message', async (msg) => {
 
     const session = userSessions[chatId];
 
-    if (session && session.step === 'awaiting_nickname') {
+    if (session && (session.step === 'awaiting_nickname' || session.step === 'awaiting_nickname_free')) {
         const nickname = text.trim();
 
         if (nickname.length < 3 || nickname.length > 16) {
@@ -739,6 +755,39 @@ bot.on('message', async (msg) => {
 
         // Сохраняем никнейм
         session.nickname = nickname;
+
+        // Если это бесплатная привилегия - выдаем сразу без оплаты
+        if (session.step === 'awaiting_nickname_free' && session.price === 0) {
+            try {
+                const rank = RANKS[session.item];
+                const command = rank.command.replace('{nickname}', nickname);
+                
+                await executeRconCommand(command);
+                
+                bot.sendMessage(chatId, `
+✅ <b>Привилегия ${rank.name} успешно выдана!</b>
+
+Игрок: <b>${nickname}</b>
+
+Привилегия активирована бесплатно! 🎁
+Приятной игры на Deltaworld! 🎮
+                `.trim(), { parse_mode: 'HTML' });
+
+                // Очищаем сессию
+                delete userSessions[chatId];
+                
+            } catch (error) {
+                console.error('RCON error:', error);
+                bot.sendMessage(chatId, `
+⚠️ <b>Ошибка выдачи привилегии</b>
+
+Попробуйте позже или обратитесь к администратору.
+                `.trim(), { parse_mode: 'HTML' });
+            }
+            return;
+        }
+
+        // Для платных привилегий - создаем инвойс
         session.step = 'ready_to_pay';
 
         // Создаем инвойс для оплаты
