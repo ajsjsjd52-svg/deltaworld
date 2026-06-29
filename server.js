@@ -347,10 +347,19 @@ bot.onText(/\/start(.*)/, async (msg, match) => {
                             return; // Завершаем обработку
                         } catch (error) {
                             console.error('RCON error:', error);
+                            console.log('📋 FREE HERO REQUEST:', nickname);
+                            
                             await bot.sendMessage(chatId, `
-⚠️ <b>Ошибка выдачи привилегии</b>
+✅ <b>Заявка на привилегию ${rank.name} принята!</b>
 
-Попробуйте позже или обратитесь к администратору.
+Игрок: <b>${nickname}</b>
+
+🎁 Бесплатная привилегия будет выдана автоматически при следующем подключении к серверу.
+
+⚠️ <b>Если привилегия не появилась через 5 минут:</b>
+Зайдите на сервер и напишите: <code>/request hero ${nickname}</code>
+
+Приятной игры на Deltaworld! 🎮
                             `.trim(), { parse_mode: 'HTML' });
                             return;
                         }
