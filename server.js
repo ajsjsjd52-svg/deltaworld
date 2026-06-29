@@ -327,9 +327,38 @@ bot.onText(/\/start(.*)/, async (msg, match) => {
                     if (!rank) {
                         throw new Error('Неизвестный ранг: ' + item);
                     }
+                    
+                    price = rank.stars;
+                    
+                    // Если привилегия бесплатная - выдаем сразу
+                    if (price === 0) {
+                        try {
+                            const command = rank.command.replace('{nickname}', nickname);
+                            await executeRconCommand(command);
+                            
+                            await bot.sendMessage(chatId, `
+✅ <b>Привилегия ${rank.name} успешно выдана!</b>
+
+Игрок: <b>${nickname}</b>
+
+Привилегия активирована бесплатно! 🎁
+Приятной игры на Deltaworld! 🎮
+                            `.trim(), { parse_mode: 'HTML' });
+                            return; // Завершаем обработку
+                        } catch (error) {
+                            console.error('RCON error:', error);
+                            await bot.sendMessage(chatId, `
+⚠️ <b>Ошибка выдачи привилегии</b>
+
+Попробуйте позже или обратитесь к администратору.
+                            `.trim(), { parse_mode: 'HTML' });
+                            return;
+                        }
+                    }
+                    
+                    // Для платных привилегий
                     title = `Привилегия ${rank.name}`;
                     description = `Привилегия ${rank.name} для игрока ${nickname}`;
-                    price = rank.stars;
                     
                     userSessions[chatId] = {
                         type: 'rank',
