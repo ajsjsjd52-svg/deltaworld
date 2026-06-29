@@ -1,0 +1,489 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.payment-page {
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Белые секции (шаг 1 и 2) */
+.content-section {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Шаг 1: Форма никнейма */
+.logo-header {
+    margin-bottom: 2rem;
+}
+
+.logo-big {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+}
+
+.site-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4a9eff;
+}
+
+.purchase-info-box {
+    background: #f5f7fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    border: 2px solid #4a9eff;
+}
+
+.purchase-info-box h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.purchase-price-box {
+    font-size: 3rem;
+    color: #4a9eff;
+    font-weight: 700;
+}
+
+.nickname-form {
+    margin-bottom: 2rem;
+}
+
+.nickname-form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.nickname-input-field {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    background: #ffffff;
+    border: 3px solid #4a9eff;
+    border-radius: 8px;
+    color: #333;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.nickname-input-field:focus {
+    outline: none;
+    border-color: #3a8eef;
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+}
+
+.hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.btn-continue {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: #4a9eff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 1rem;
+}
+
+.btn-continue:hover {
+    background: #3a8eef;
+    transform: scale(1.02);
+}
+
+.back-link {
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #4a9eff;
+}
+
+/* Шаг 2: Способы оплаты */
+.section-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.admin-link {
+    color: #4a9eff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.admin-link:hover {
+    text-decoration: underline;
+}
+
+/* Сетка методов оплаты */
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.payment-box {
+    background: #f5f7fa;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.payment-box:hover {
+    border-color: #4a9eff;
+    background: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(74, 158, 255, 0.2);
+}
+
+.box-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+}
+
+.box-icon-dual {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box-title {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: #f5f7fa;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e0e0e0;
+}
+
+.security-badge span {
+    color: #00D26A;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-back-white {
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: #666;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-back-white:hover {
+    border-color: #4a9eff;
+    color: #4a9eff;
+}
+
+/* Шаг 3: Детали оплаты (темный фон) */
+.payment-details-page {
+    min-height: 100vh;
+    background: #0a1628;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.payment-details-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(0, 255, 200, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(100, 150, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 80%, rgba(150, 100, 255, 0.25) 0%, transparent 50%);
+    animation: aurora 20s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes aurora {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-80px) scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+.details-container {
+    max-width: 700px;
+    width: 100%;
+    background: rgba(35, 50, 80, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 2px solid rgba(74, 144, 226, 0.3);
+}
+
+.details-title {
+    font-size: 2rem;
+    color: #e8e8e8;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.details-content {
+    margin-bottom: 2rem;
+}
+
+/* Детали карт */
+.card-details-info {
+    margin-bottom: 2rem;
+}
+
+.card-item {
+    background: rgba(25, 40, 65, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.card-label {
+    font-size: 1.1rem;
+    color: #b0c4de;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+}
+
+.badge-mir {
+    background: #4DB45E;
+}
+
+.card-number-display {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.card-number-text {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-family: 'Courier New', monospace;
+    background: rgba(15, 25, 45, 0.8);
+    border: 2px solid rgba(74, 144, 226, 0.3);
+    border-radius: 8px;
+    color: #4a9eff;
+    text-align: center;
+    font-weight: 700;
+}
+
+.copy-btn {
+    padding: 1rem 1.5rem;
+    background: #4a9eff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    background: #3a8eef;
+}
+
+.instructions {
+    background: rgba(15, 25, 45, 0.6);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #4a9eff;
+    margin-bottom: 1.5rem;
+}
+
+.instructions h4 {
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.instructions ol {
+    color: #b0c4de;
+    line-height: 2;
+    padding-left: 1.5rem;
+}
+
+.online-payment-info {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(25, 40, 65, 0.6);
+    border-radius: 8px;
+    color: #b0c4de;
+}
+
+.payment-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: #4a9eff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.payment-link:hover {
+    background: #3a8eef;
+}
+
+.contact-note {
+    text-align: center;
+    color: #b0c4de;
+    padding: 1rem;
+    background: rgba(255, 170, 0, 0.1);
+    border-radius: 8px;
+}
+
+.btn-complete {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: #4a9eff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 1rem;
+}
+
+.btn-complete:hover {
+    background: #3a8eef;
+}
+
+.btn-back-dark {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: #b0c4de;
+    border: 2px solid rgba(74, 144, 226, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-back-dark:hover {
+    border-color: #4a9eff;
+    color: #4a9eff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .payment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .logo-big {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .site-name {
+        font-size: 2rem;
+    }
+    
+    .card-number-display {
+        flex-direction: column;
+    }
+    
+    .details-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-grid {
+        grid-template-columns: 1fr;
+    }
+}

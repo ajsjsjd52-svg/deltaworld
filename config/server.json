@@ -1,0 +1,19 @@
+{
+  "minecraft": {
+    "ip": "play.deltaworld.ru",
+    "port": 25565,
+    "version": "1.20.x",
+    "mode": "Survival"
+  },
+  "api": {
+    "port": 3001,
+    "host": "0.0.0.0",
+    "cors": {
+      "enabled": true,
+      "origins": [
+        "http://localhost:3000",
+        "https://ваш-домен.vercel.app"
+      ]
+    }
+  }
+}

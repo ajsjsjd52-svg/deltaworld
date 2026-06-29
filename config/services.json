@@ -1,0 +1,31 @@
+{
+  "services": {
+    "unmute": {
+      "name": "Размут",
+      "displayName": "Снятие мута",
+      "price": 15,
+      "stars": 15,
+      "command": "unmute {nickname}",
+      "description": "Снятие мута с вашего аккаунта",
+      "icon": "🔊"
+    },
+    "unban": {
+      "name": "Разбан",
+      "displayName": "Снятие бана",
+      "price": 150,
+      "stars": 150,
+      "command": "pardon {nickname}",
+      "description": "Снятие бана с вашего аккаунта",
+      "icon": "🔓"
+    }
+  },
+  "relics": {
+    "enabled": true,
+    "rate": 5,
+    "currency": "рубли",
+    "min": 5,
+    "max": 100000,
+    "command": "eco give {nickname} {amount}",
+    "description": "Внутриигровая валюта сервера"
+  }
+}

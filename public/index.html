@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deltaworld - Minecraft Сервер</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Inline критические стили для предотвращения белого экрана */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #0a1628;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a1628;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 200, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(100, 150, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(150, 100, 255, 0.25) 0%, transparent 50%);
+            animation: aurora 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes aurora {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-80px) scale(1.05); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="/logo.png" alt="Deltaworld" class="logo-image" onerror="this.style.display='none'">
+                DELTAWORLD
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#donate">Донат</a></li>
+                <li><a href="#services">Услуги</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="hero-title">DELTAWORLD</h1>
+            <p class="hero-subtitle">Minecraft сервер</p>
+            <div class="server-ip">
+                <div class="ip-label">IP сервера:</div>
+                <div class="ip-address" id="serverIp">
+                    <span id="ipText">Загрузка...</span>
+                    <button class="copy-btn" onclick="copyIP()">Скопировать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Донат -->
+    <section id="donate" class="donate-section">
+        <div class="container">
+            <h2 class="section-title">Привилегии</h2>
+            <div class="donate-grid">
+                <div class="donate-card">
+                    <h3 class="rank-name rank-hero">HERO</h3>
+                    <div class="rank-price">9₽</div>
+                    <button class="btn-donate" onclick="openDonate('hero')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-titan">TITAN</h3>
+                    <div class="rank-price">17₽</div>
+                    <button class="btn-donate" onclick="openDonate('titan')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-avenger">AVENGER</h3>
+                    <div class="rank-price">25₽</div>
+                    <button class="btn-donate" onclick="openDonate('avenger')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-overlord">OVERLORD</h3>
+                    <div class="rank-price">50₽</div>
+                    <button class="btn-donate" onclick="openDonate('overlord')">Купить</button>
+                </div>
+
+                <div class="donate-card featured">
+                    <h3 class="rank-name rank-minister">MINISTER</h3>
+                    <div class="rank-price">115₽</div>
+                    <button class="btn-donate" onclick="openDonate('minister')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-imperator">IMPERATOR</h3>
+                    <div class="rank-price">199₽</div>
+                    <button class="btn-donate" onclick="openDonate('imperator')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-daemon">DAEMON</h3>
+                    <div class="rank-price">359₽</div>
+                    <button class="btn-donate" onclick="openDonate('daemon')">Купить</button>
+                </div>
+
+                <div class="donate-card">
+                    <h3 class="rank-name rank-cobra">COBRA</h3>
+                    <div class="rank-price">599₽</div>
+                    <button class="btn-donate" onclick="openDonate('cobra')">Купить</button>
+                </div>
+
+                <div class="donate-card featured">
+                    <h3 class="rank-name rank-god">GOD</h3>
+                    <div class="rank-price">999₽</div>
+                    <button class="btn-donate" onclick="openDonate('god')">Купить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Покупка риликов и услуг -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Дополнительные услуги</h2>
+            
+            <!-- Покупка риликов -->
+            <div class="service-card">
+                <h3>Покупка риликов</h3>
+                <p class="service-description">1₽ = 5 риликов. Максимум за один раз: 100 000 риликов</p>
+                
+                <div class="relics-calculator">
+                    <div class="slider-container">
+                        <label for="relicsSlider">Выберите количество риликов:</label>
+                        <input type="range" id="relicsSlider" min="5" max="100000" value="100" step="5">
+                        <div class="slider-display">
+                            <div class="relics-amount-box">
+                                <span id="relicsAmount">100</span>
+                                <span class="relics-label">риликов</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-display">
+                        <div class="price-label">Стоимость:</div>
+                        <div class="price-value" id="relicsPrice">20₽</div>
+                    </div>
+                    
+                    <button class="btn-buy" onclick="buyRelics()">Купить рилики</button>
+                </div>
+            </div>
+            
+            <!-- Разбан и размут -->
+            <div class="unban-services">
+                <div class="service-card-small">
+                    <h3>Размут</h3>
+                    <div class="service-price">15₽</div>
+                    <p class="service-desc">Снятие мута с аккаунта</p>
+                    <button class="btn-service" onclick="buyUnmute()">Купить размут</button>
+                </div>
+                
+                <div class="service-card-small">
+                    <h3>Разбан</h3>
+                    <div class="service-price">150₽</div>
+                    <p class="service-desc">Снятие бана с аккаунта</p>
+                    <button class="btn-service" onclick="buyUnban()">Купить разбан</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Deltaworld. Все права защищены.</p>
+            <p>Minecraft является торговой маркой Mojang AB</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+        // Debug - проверка загрузки
+        console.log('Index.html loaded');
+        
+        // Fallback если скрипт не загрузился
+        window.addEventListener('DOMContentLoaded', () => {
+            const ipText = document.getElementById('ipText');
+            if (ipText && ipText.textContent === 'Загрузка...') {
+                setTimeout(() => {
+                    if (ipText.textContent === 'Загрузка...') {
+                        ipText.textContent = 'play.deltaworld.ru';
+                    }
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

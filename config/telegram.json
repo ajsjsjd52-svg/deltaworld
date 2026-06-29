@@ -1,0 +1,22 @@
+{
+  "bot": {
+    "username": "DeltaPayment_bot",
+    "token": "8701634017:AAHl2jmFjDFJ_6qVB4WZvRuj8UgWG2ccdkU",
+    "mode": "polling",
+    "webhook": {
+      "enabled": false,
+      "url": "",
+      "port": 8443
+    }
+  },
+  "messages": {
+    "welcome": "🎮 Добро пожаловать в DeltaPayment!\n\nЗдесь вы можете приобрести привилегии и услуги для сервера Deltaworld используя Telegram Stars ⭐",
+    "payment_success": "✅ Оплата успешна!\n\nПокупка была автоматически выдана игроку {nickname}\n\nСпасибо за покупку! Приятной игры на Deltaworld! 🎮",
+    "payment_pending": "⚠️ Оплата получена\n\nВаша покупка будет выдана в течение нескольких минут.\nЕсли покупка не поступила, обратитесь к администратору.\n\nИгрок: {nickname}",
+    "payment_error": "❌ Произошла ошибка при обработке платежа. Обратитесь к администратору."
+  },
+  "admin": {
+    "contact": "@deltaworld_admin",
+    "notification_chat_id": null
+  }
+}

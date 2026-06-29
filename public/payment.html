@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата - Deltaworld</title>
+    <link rel="stylesheet" href="/payment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Основной контейнер -->
+    <div class="payment-page">
+        <!-- Шаг 1: Ввод никнейма -->
+        <div class="content-section" id="nicknameSection">
+            <div class="logo-header">
+                <img src="/logo.png" alt="Deltaworld" class="logo-big" onerror="this.style.display='none'">
+                <h1 class="site-name">DELTAWORLD</h1>
+            </div>
+            
+            <div class="purchase-info-box">
+                <h2 id="purchaseTitle">Загрузка...</h2>
+                <div class="purchase-price-box" id="purchasePrice">0₽</div>
+            </div>
+
+            <div class="nickname-form">
+                <label for="nicknameInput">Введите ваш игровой никнейм</label>
+                <input 
+                    type="text" 
+                    id="nicknameInput" 
+                    class="nickname-input-field" 
+                    placeholder="Ваш ник в Minecraft"
+                    maxlength="16"
+                >
+                <p class="hint">Укажите точный никнейм, как в игре</p>
+            </div>
+
+            <button class="btn-continue" onclick="showPaymentMethods()">Продолжить</button>
+            <a href="index.html" class="back-link">← Вернуться на главную</a>
+        </div>
+
+        <!-- Шаг 2: Выбор способа оплаты -->
+        <div class="content-section" id="paymentMethodsSection" style="display: none;">
+            <h1 class="section-title">Выберите способ оплаты</h1>
+            <p class="section-subtitle">
+                Доступен ограниченный список методов оплаты. Если хотите использовать другой метод, напишите <a href="#" class="admin-link">нашему администратору</a>
+            </p>
+
+            <div class="payment-grid">
+                <!-- СБП -->
+                <div class="payment-box" onclick="selectPaymentMethod('sbp')">
+                    <div class="box-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" fill="url(#gradient1)"/>
+                            <defs>
+                                <linearGradient id="gradient1" x1="4" y1="4" x2="44" y2="44">
+                                    <stop offset="0%" stop-color="#FF6B9D"/>
+                                    <stop offset="50%" stop-color="#C54FC8"/>
+                                    <stop offset="100%" stop-color="#6C63FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="box-title">Система быстрых платежей</div>
+                </div>
+
+                <!-- МИР -->
+                <div class="payment-box" onclick="selectPaymentMethod('mir')">
+                    <div class="box-icon">
+                        <svg width="56" height="36" viewBox="0 0 56 36" fill="none">
+                            <rect width="56" height="36" rx="4" fill="#4DB45E"/>
+                            <rect x="6" y="14" width="44" height="8" rx="2" fill="white" opacity="0.3"/>
+                            <text x="28" y="26" text-anchor="middle" fill="white" font-size="10" font-weight="bold">МИР</text>
+                        </svg>
+                    </div>
+                    <div class="box-title">Карты МИР</div>
+                </div>
+
+                <!-- ЮMoney -->
+                <div class="payment-box" onclick="selectPaymentMethod('yoomoney')">
+                    <div class="box-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="#8B3FFD"/>
+                            <circle cx="24" cy="24" r="12" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="box-title">ЮMoney</div>
+                </div>
+
+                <!-- Visa & Mastercard -->
+                <div class="payment-box" onclick="selectPaymentMethod('visa-master')">
+                    <div class="box-icon box-icon-dual">
+                        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+                            <rect width="36" height="24" rx="3" fill="#1434CB"/>
+                            <text x="18" y="16" text-anchor="middle" fill="white" font-size="8" font-weight="bold">VISA</text>
+                        </svg>
+                        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+                            <rect width="36" height="24" rx="3" fill="#EB001B"/>
+                            <circle cx="14" cy="12" r="7" fill="#FF5F00" opacity="0.9"/>
+                            <circle cx="22" cy="12" r="7" fill="#F79E1B" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <div class="box-title">Visa / Mastercard</div>
+                </div>
+
+                <!-- Зарубежные карты -->
+                <div class="payment-box" onclick="selectPaymentMethod('foreign')">
+                    <div class="box-icon">
+                        <svg width="56" height="36" viewBox="0 0 56 36" fill="none">
+                            <rect width="56" height="36" rx="4" fill="#1A73E8"/>
+                            <rect x="6" y="14" width="44" height="8" rx="2" fill="white" opacity="0.3"/>
+                            <text x="28" y="26" text-anchor="middle" fill="white" font-size="8" font-weight="bold">CARD</text>
+                        </svg>
+                    </div>
+                    <div class="box-title">Зарубежные карты</div>
+                </div>
+
+                <!-- Telegram Stars -->
+                <div class="payment-box" onclick="selectPaymentMethod('telegram')">
+                    <div class="box-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="url(#telegramGradient)"/>
+                            <path d="M24 8L27 20L24 32L21 20L24 8Z" fill="white"/>
+                            <path d="M16 24L28 27L40 24L28 21L16 24Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="telegramGradient" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#FF6B9D"/>
+                                    <stop offset="100%" stop-color="#FFA8D5"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="box-title">Telegram Stars</div>
+                </div>
+
+                <!-- Cryptobot -->
+                <div class="payment-box" onclick="selectPaymentMethod('cryptobot')">
+                    <div class="box-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="#00D4FF"/>
+                            <path d="M24 12C17.4 12 12 17.4 12 24C12 30.6 17.4 36 24 36C30.6 36 36 30.6 36 24C36 17.4 30.6 12 24 12Z" fill="white"/>
+                            <circle cx="24" cy="24" r="8" fill="#00D4FF"/>
+                        </svg>
+                    </div>
+                    <div class="box-title">Cryptobot</div>
+                </div>
+            </div>
+
+            <div class="security-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L4 6V12C4 16.5 7.5 20.5 12 22C16.5 20.5 20 16.5 20 12V6L12 2Z" fill="#00D26A"/>
+                    <path d="M10 14L7 11L8.5 9.5L10 11L15.5 5.5L17 7L10 14Z" fill="white"/>
+                </svg>
+                <span>VERIFIED & SECURED</span>
+            </div>
+
+            <button class="btn-back-white" onclick="showNicknameForm()">← Назад</button>
+        </div>
+
+        <!-- Шаг 3: Детали оплаты (темный фон) -->
+        <div class="payment-details-page" id="paymentDetailsSection" style="display: none;">
+            <div class="details-container">
+                <h2 class="details-title" id="methodTitle">Оплата</h2>
+                
+                <div class="details-content" id="detailsContent"></div>
+
+                <button class="btn-complete" onclick="completePurchase()">Я оплатил</button>
+                <button class="btn-back-dark" onclick="backToPaymentMethods()">← Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/payment.js"></script>
+</body>
+</html>

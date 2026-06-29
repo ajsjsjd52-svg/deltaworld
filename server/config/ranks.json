@@ -1,0 +1,95 @@
+{
+  "ranks": {
+    "hero": {
+      "name": "HERO",
+      "displayName": "Герой",
+      "price": 9,
+      "stars": 9,
+      "color": "#00ff88",
+      "command": "lp user {nickname} parent set hero",
+      "description": "Начальная привилегия",
+      "features": [
+        "Цветной ник",
+        "Приватная территория 2x2 чанка",
+        "5 точек дома"
+      ]
+    },
+    "titan": {
+      "name": "TITAN",
+      "displayName": "Титан",
+      "price": 17,
+      "stars": 17,
+      "color": "#4a9eff",
+      "command": "lp user {nickname} parent set titan",
+      "description": "Улучшенная привилегия",
+      "features": [
+        "Все что в HERO",
+        "Приватная территория 3x3 чанка",
+        "10 точек дома"
+      ]
+    },
+    "avenger": {
+      "name": "AVENGER",
+      "displayName": "Мститель",
+      "price": 25,
+      "stars": 25,
+      "color": "#ff6b9d",
+      "command": "lp user {nickname} parent set avenger",
+      "description": "Продвинутая привилегия"
+    },
+    "overlord": {
+      "name": "OVERLORD",
+      "displayName": "Повелитель",
+      "price": 50,
+      "stars": 50,
+      "color": "#9d4eff",
+      "command": "lp user {nickname} parent set overlord",
+      "description": "Мощная привилегия"
+    },
+    "minister": {
+      "name": "MINISTER",
+      "displayName": "Министр",
+      "price": 115,
+      "stars": 115,
+      "color": "#ffaa00",
+      "command": "lp user {nickname} parent set minister",
+      "description": "Элитная привилегия"
+    },
+    "imperator": {
+      "name": "IMPERATOR",
+      "displayName": "Император",
+      "price": 199,
+      "stars": 199,
+      "color": "#ff4444",
+      "command": "lp user {nickname} parent set imperator",
+      "description": "Имперская привилегия"
+    },
+    "daemon": {
+      "name": "DAEMON",
+      "displayName": "Демон",
+      "price": 359,
+      "stars": 359,
+      "color": "#aa00ff",
+      "command": "lp user {nickname} parent set daemon",
+      "description": "Легендарная привилегия"
+    },
+    "cobra": {
+      "name": "COBRA",
+      "displayName": "Кобра",
+      "price": 599,
+      "stars": 599,
+      "color": "#00ffff",
+      "command": "lp user {nickname} parent set cobra",
+      "description": "Мифическая привилегия"
+    },
+    "god": {
+      "name": "GOD",
+      "displayName": "Бог",
+      "price": 999,
+      "stars": 999,
+      "color": "#ffffff",
+      "command": "lp user {nickname} parent set god",
+      "description": "Божественная привилегия"
+    }
+  }
+}
